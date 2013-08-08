@@ -70,6 +70,12 @@ module.exports = function(app) {
 		res.render('home/' + viewname)
 	})
 
+	app.get('/feed/:viewname', function(req, res) {
+		var viewname = req.params.viewname
+		console.log(req.params.viewname);
+		res.render('feed/' + viewname)
+	})
+
 	app.get('/:viewname', function(req, res) {
 		var viewname = req.params.viewname
 		console.log(req.params.viewname);
