@@ -6,6 +6,7 @@
 var express = require('express')
   , http = require('http')
   , path = require('path')
+  , passport = require('passport')
   , app = express();
 
 
@@ -19,12 +20,15 @@ app.configure(function () {
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.cookieParser('twitterspitter'));
-	app.use(express.session());
+	app.use(express.session({secret: 'cellophane'}));
+	app.use(passport.initialize());
+	app.use(passport.session());
 	app.use(app.router);
 
 	app.use(require('less-middleware')({ src: __dirname + '/public' }));
 	app.use(express.static(path.join(__dirname, 'public')));
 });
+
 
 require('./routes')(app);
 
