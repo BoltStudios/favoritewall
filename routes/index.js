@@ -11,6 +11,8 @@ var passport = require('passport')
   , twitter = require('passport-twitter').Strategy
 
 module.exports = function(app) {
+  
+  require('./dashboard')(app);
 
 	app.get('/', function(req, res) {
 		res.render('index', { title: 'Express' })
@@ -80,7 +82,7 @@ module.exports = function(app) {
 		var viewname = req.params.viewname
 		console.log(req.params.viewname);
 		res.render('/' + viewname)
-	})
+	});
 
 	// app.get('/blog/:viewname', function(req, res) {
 	// 	var viewname = req.params.viewname
