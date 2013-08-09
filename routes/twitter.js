@@ -32,7 +32,7 @@ module.exports = function(app) {
 	// access user through req.session.passposrt.user (sorry)
 	passport.serializeUser(function(user, done) {		
 		done(null, {
-			id: user['_id'],
+			name: user['name'],
 			providerId: user['providerId'],
 			token: user['token'],
 			tokenSecret: user['tokenSecret']
