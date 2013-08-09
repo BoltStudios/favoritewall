@@ -7,6 +7,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , passport = require('passport')
+  , mongoose = require('mongoose')
   , app = express();
 
 
@@ -20,16 +21,14 @@ app.configure(function () {
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.cookieParser('twitterspitter'));
-	app.use(express.session({secret: 'cellophane'}));
+	app.use(express.cookieSession({secret: 'yo momma so dumb she'}))
 	app.use(passport.initialize());
-	app.use(passport.session());
 	app.use(app.router);
-
 	app.use(require('less-middleware')({ src: __dirname + '/public' }));
 	app.use(express.static(path.join(__dirname, 'public')));
 });
 
-
+mongoose.connect('mongodb://localhost/twitterspitter')
 require('./routes')(app);
 
 // development only
