@@ -10,6 +10,8 @@ var express = require('express')
   , mongoose = require('mongoose')
   , app = express();
 
+  GLOBAL.consumerKey = 'lus2i66cmnPgla8zF2q5Q'
+  GLOBAL.consumerSecret = '4ZcSL65MtaUKrUu4H0bUKRaF6vADvpEDsykjM68Vs8A'
 
 // all environments
 app.configure(function () {    
