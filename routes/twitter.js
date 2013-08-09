@@ -1,7 +1,6 @@
 var passport = require('passport')
   , twitter = require('passport-twitter').Strategy
   , oauth = require('oauth').OAuth
-  , User = require('../models/user')
   , filters = require('./actionFilter')
 
 
@@ -51,23 +50,10 @@ module.exports = function(app) {
 	passport.use(new twitter({
     	consumerKey: GLOBAL.consumerKey,
     	consumerSecret: GLOBAL.consumerSecret,
-    	callbackURL: 'http://127.0.0.1:3000/auth/twitter/callback'
+    	callbackURL: '/auth/twitter/callback'
 	}, function(token, tokenSecret, profile, done) {
 		var profileObject = {provider: profile.provider, providerId: profile.id, name: profile.username, token:token, tokenSecret:tokenSecret}
-
-		User.findOne({provider: profileObject.provider, providerId: profileObject.providerId}, function(error, user) {
-			if(error) {
-				return done(error)
-			} else if(!user) {
-				new User(profileObject).save(function(error, newUser) {
-					profileObject['_id'] = newUser._id
-					return done(null, profileObject)
-				})
-			} else {
-				profileObject['_id'] = user._id
-				return done(null, profileObject)
-			}
-		})
+		return done(null, profileObject)
 	}))
 
 

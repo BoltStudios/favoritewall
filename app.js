@@ -7,7 +7,6 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , passport = require('passport')
-  , mongoose = require('mongoose')
   , app = express();
 
   GLOBAL.consumerKey = 'lus2i66cmnPgla8zF2q5Q'
@@ -30,7 +29,6 @@ app.configure(function () {
 	app.use(express.static(path.join(__dirname, 'public')));
 });
 
-mongoose.connect('mongodb://localhost/twitterspitter')
 require('./routes')(app);
 
 // development only
