@@ -1,0 +1,41 @@
+  body {
+    background-color:#0f0;
+    padding:0;
+    margin:0;
+  }
+	.tweet-panel {
+    position:absolute;
+    top:66%;
+    left:130px;
+    right:0;
+    bottom:0;
+    height:26%;
+		background-color:#046;
+	}
+	.tweet-panel .icon {
+    float:left;
+    margin:5px 20px 0 20px;
+	}
+	.tweet-panel .icon img {
+    width:100%;
+	}
+	.tweet {
+	  clear:none;
+    color:#FFF;
+    font-family: 'Doppio One', sans-serif;
+    margin:10px 50px 0 0;
+	}
+	.hash {
+    color:#3cf;
+	}
+	.tweet-panel .info {
+	  display:block;
+    opacity:.5;
+    font-size:.6em;
+    margin-top:3px;
+	}
+	.tweet-panel .link {
+    opacity:.8;
+    font-size:.8em;
+    letter-spacing:-1px;
+	}

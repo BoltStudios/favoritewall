@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 	<head>	
-	  
-	  <style type='text/css'>
-	    body {
-	      background-color:#000;
-	    }
-	    .tweet {
-	      color:#FFF;
-	      font-family:sans-serif;
-	      text-align:center;
-	    }
-	  </style>
+	
+	  <link rel='stylesheet' type='text/css' href='/stylesheets/dashboard.css' />
 	
 	</head>
 	<body>
-	
-	  <div class='tweet'>
-	    "If you work with people, no matter what your title is, it’s your job to make the people around you feel better, empowered and encouraged".
-	  </div>
+
+    <div class='tweet-panel'>
+		  <div class='icon'>
+		    <img src='/images/tweet-icon.png' />
+		  </div>
+      <div class='tweet'>
+	      So exciting putting together school supplies that we will be giving away Saturday!
+			  It's going to be a great day at <span class='hash'>#VictoryChurch</span>! <span class='link'>http://bit.ly/abcdef</span>
+		    <span class='info'>Josh Wright | @BendyTree | Brought to you by Bolt Studios</span>
+      </div>
+    </div>
+
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+		<script src='/javascripts/dashboard-redraw.js'></script>
 	
 	</body>
 </html>
