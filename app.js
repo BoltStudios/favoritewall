@@ -9,6 +9,8 @@ var express = require('express')
   , passport = require('passport')
   , app = express();
 
+  GLOBAL.consumerKey = 'lus2i66cmnPgla8zF2q5Q'
+  GLOBAL.consumerSecret = '4ZcSL65MtaUKrUu4H0bUKRaF6vADvpEDsykjM68Vs8A'
 
 // all environments
 app.configure(function () {    
@@ -20,15 +22,12 @@ app.configure(function () {
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.cookieParser('twitterspitter'));
-	app.use(express.session({secret: 'cellophane'}));
+	app.use(express.cookieSession({secret: 'yo momma so dumb she'}))
 	app.use(passport.initialize());
-	app.use(passport.session());
 	app.use(app.router);
-
 	app.use(require('less-middleware')({ src: __dirname + '/public' }));
 	app.use(express.static(path.join(__dirname, 'public')));
 });
-
 
 require('./routes')(app);
 
