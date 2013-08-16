@@ -4,9 +4,25 @@ function ResultsController($scope, $location, $http, $routeParams) {
 	$scope.username = (!$routeParams.username || $routeParams.username === "" ? "self" : $routeParams.username)
 	$scope.count = $routeParams.count
 	$scope.tweets = getTweets()
+	var username = (!$routeParams.username || $routeParams.username === "" ? null : $routeParams.username)
+	var favoritesUrl = "/favorites/" + 
+						($routeParams.username ? $routeParams.username + "/" : "") + 
+						"?count=" + $scope.count
+	console.log(favoritesUrl)
+
+	$http({method: 'GET', url: favoritesUrl}).
+	  success(function(data, status, headers, config) {
+	    console.log(data)
+	    $scope.tweets = data
+	  }).
+	  error(function(data, status, headers, config) {
+	    console.log(data)
+	  });
 
 
 	function getTweets(){
+
+
 
 		/* debug
 		=============================================== */
