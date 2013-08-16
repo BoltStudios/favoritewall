@@ -11,7 +11,9 @@
         results = regex.exec(location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
+  
   var username = getParameterByName('username');
+
   
   var tweetToHtml = function(tweet){
     //return "To be <span class='hash'>#successful</span>, you have to stand behind and make big bets on people you believe in. <span class='hash'>#Leadership</span><span class='info'>Cale Kennedy | @CaleKennedy | Brought to you by Bolt Studios</span>";

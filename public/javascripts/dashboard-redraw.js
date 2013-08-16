@@ -6,8 +6,26 @@
   var $img = $(".tweet-panel .icon");
   var $tweetPnl = $(".tweet-panel");
 
+  function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+  var layout = getParameterByName('layout');
+
   //resize icon and tweet to look nice
   window.redrawTweet = function(){
+
+  	if(layout === "fullscreen"){
+  		$tweetPnl.addClass("fullscreen");
+  		$("body").addClass("fullscreen");
+  	}
+  	else{
+  		$tweetPnl.removeClass("fullscreen");
+  		$("body").removeClass("fullscreen");
+  	}  	  
+
 	  $tweet.show();
 		$img.show();
 

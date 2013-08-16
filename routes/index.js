@@ -38,6 +38,8 @@ module.exports = function(app) {
 
 	app.get('/result', function(req, res){
 	  var username = req.query.username;
+	  var layout = req.query.layout;
+	  console.log(layout)
 	  res.render('result/index');
 	});
 

@@ -39,3 +39,10 @@
     font-size:.8em;
     letter-spacing:-1px;
 	}
+    .tweet-panel.fullscreen{
+        right: 130px;
+        top: 37%;
+    }
+    body.fullscreen{
+        background-color: #046;
+    }
