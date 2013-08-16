@@ -1,5 +1,6 @@
 function ResultsController($scope, $location, $http, $routeParams) {
 
+
 	$scope.username = (!$routeParams.username || $routeParams.username === "" ? "self" : $routeParams.username)
 	$scope.count = $routeParams.count
 	getTweets()
@@ -11,7 +12,6 @@ function ResultsController($scope, $location, $http, $routeParams) {
 
 
 	function getTweets(){
-		/* live */
 		var url = "/favorites/" + (!$scope.username ? "?count=" : ($scope.username  + "/?count=")) + $scope.count
 		var tweets = [];
 		$http.get(url)
@@ -23,6 +23,7 @@ function ResultsController($scope, $location, $http, $routeParams) {
 				$scope.error = "Error loading tweets. Sorry."
 			})
 	}
+
 }
 
 
