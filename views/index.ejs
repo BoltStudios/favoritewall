@@ -6,6 +6,7 @@
 <html ng-app='twitterspitter'>
 
   <head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     <script type='text/javascript' src='/lib/angular.min.js'></script>
     <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js'></script>
 
@@ -18,10 +19,26 @@
   </head>
 
   <body>
-
+    <div style="background-color: #3684c6;">
+      <img style="padding-top: 20px; padding-left: 20px;" src="images/favoritewall.png"/>
+      <div style="position: absolute; right: 0; top: 30px;">
+        <a class="navbarlink" href="">why is this free?</a>
+        <a class="navbarlink" href="">about us</a>
+        <a class="navbarlink" href="">see how it works</a>
+           </div>
+    </div>
     <div ng-view class="page-wrapper">
     	<!-- partials here -->
     </div>
-
+    <div style="padding: 0 15px;">
+      <hr>
+      <p>&copy; 2013 Bolt Studios proudly MadeInOK</p>
+      <div style="position: absolute; right: 0; padding-right: 15px">
+        <a class="footerlink" href="">See How It Works</a>
+        <a class="footerlink" href="">Why Free?</a>
+        <a class="footerlink" href="">Demo</a>
+        <a class="footerlink" href="">About Bolt</a>
+      </div>
+    </div>
   </body>
 </html>
