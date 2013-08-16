@@ -1,5 +1,8 @@
-body {  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-		margin: 0;
+html{
+	font-family: 'Open Sans', sans-serif;
+}
+
+body {  margin: 0;
 }
 
 div.wrapper{
@@ -26,15 +29,40 @@ div.bottomdiv{
 	overflow: hidden;
 	height: 33%;
 	padding: 40px 0;
+	display: block;
+	margin-right: auto; 
+	margin-left: auto;
+	text-align: center;
+	width: 900px;
 }
 
 div.bottomtext{
 	text-align: left;
 	float: left;
-	width:30%;
+	width:40%;
 	padding: 0 40px;
+}
+
+button.twitterbutton{
+	background-color: #3684c6; 
+	border: 0;
 }
 
 a {
   color: #00B7FF;
+}
+
+a.navbarlink{
+	color: white;
+	text-decoration: none;
+	padding: 0 10px;
+}
+
+a.footerlink
+{
+	color: black;
+	text-decoration: none;
+	padding: 0 10px ;
+	padding-bottom: 10px;
+
 }
