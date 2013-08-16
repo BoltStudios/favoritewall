@@ -36,11 +36,18 @@ module.exports = function(app) {
 		res.render('search/' + viewname)
 	})
 
+	app.get('/result/:viewname', function(req, res) {
+		var viewname = req.params.viewname
+		console.log(req.params.viewname);
+		res.render('result/' + viewname)
+	});
+
 	app.get('/:viewname', function(req, res) {
 		var viewname = req.params.viewname
 		console.log(req.params.viewname);
 		res.render('/' + viewname)
 	});
+
 
 	// app.get('/blog/:viewname', function(req, res) {
 	// 	var viewname = req.params.viewname

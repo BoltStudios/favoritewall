@@ -7,7 +7,7 @@ var controllers = {
 var views = {
 		home: "/home/index"
 	,	search: "/search/index"
-	, 	result: "/results/index"
+	, 	result: "/result/index"
 }
 
 var app = angular.module('twitterspitter', [])
