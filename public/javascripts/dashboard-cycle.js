@@ -61,9 +61,7 @@
     $.getJSON('/favorites/'+username, function(t){
       var reload = window.tweets.length == 0;
       window.tweets = t;
-      if(reload){
-        showNext();
-      }
+      showNext();
     });
   };
   setInterval(load, 5*60*1000);
