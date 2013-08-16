@@ -1,9 +1,8 @@
 function ResultsController($scope, $location, $http, $routeParams) {
 
-	console.log("why won't you log")
 	$scope.username = (!$routeParams.username || $routeParams.username === "" ? "self" : $routeParams.username)
 	$scope.count = $routeParams.count
-	$scope.tweets = getTweets()
+	getTweets()
 	var username = (!$routeParams.username || $routeParams.username === "" ? null : $routeParams.username)
 	var favoritesUrl = "/favorites/" + 
 						($routeParams.username ? $routeParams.username + "/" : "") + 
@@ -17,14 +16,11 @@ function ResultsController($scope, $location, $http, $routeParams) {
 		var tweets = [];
 		$http.get(url)
 			.success(function(response){
-				console.log(response)
-				tweets = response
+				$scope.tweets = response
 			})
 			.error(function(response){
-				console.log(response)
+				$scope.error = "Error loading tweets. Sorry."
 			})
-			console.log(tweets)
-			return tweets
 	}
 }
 

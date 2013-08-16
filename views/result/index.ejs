@@ -14,10 +14,17 @@
 </style>
 TEST
 <p> requested {{count}} results for {{username}} </p> 
+
+<div ng-show='error' class='alert alert-error'>
+	{{ error }}
+</div>
+
+<div ng-show='!error'>
 <div class="tweets-wrapper">
 	<div ng-repeat="tweet in tweets" class="tweet-wrapper">
 		<img  class="twitter-logo" src="{{twitterlogo}}"/>
 		<span class="user-name">@{{tweet.user.name}}</span>
 		<span class="tweet-body">{{tweet.text}}</span>
 	</div>
+</div>
 </div>
