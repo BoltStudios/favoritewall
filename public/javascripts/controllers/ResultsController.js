@@ -17,6 +17,7 @@ function ResultsController($scope, $location, $http, $routeParams) {
 		$http.get(url)
 			.success(function(response){
 				$scope.tweets = response
+				window.tweets = $scope.tweets // for jQuery
 			})
 			.error(function(response){
 				$scope.error = "Error loading tweets. Sorry."
