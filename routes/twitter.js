@@ -6,9 +6,9 @@ var passport = require('passport')
 
 module.exports = function(app) {
 	
-	app.get('/favorites/:username?', function(req, res) {
+	app.get('/favorites/:username', function(req, res) {
 		var username = req.params.username || ''
-		  , count = req.query.count || 10
+		  , count = 10
 		  , path = 'https://api.twitter.com/1.1/favorites/list.json?count='+count
 		
 		path = !username ? path + '&user_id' + req.session.passport.user.providerId : path + '&screen_name='+username

@@ -8,8 +8,7 @@
 // };
 
 module.exports = function(app) {
-  
-  require('./dashboard')(app);
+
 
 	require('./twitter')(app)
 
@@ -35,11 +34,11 @@ module.exports = function(app) {
 		console.log(req.params.viewname);
 		res.render('search/' + viewname)
 	})
+	
 
-	app.get('/result/:viewname', function(req, res) {
-		var viewname = req.params.viewname
-		console.log(req.params.viewname);
-		res.render('result/' + viewname)
+	app.get('/result', function(req, res){
+	  var username = req.query.username;
+	  res.render('result/index');
 	});
 
 	app.get('/:viewname', function(req, res) {

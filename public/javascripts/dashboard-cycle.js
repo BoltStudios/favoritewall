@@ -5,7 +5,16 @@
   var $tweet = $(".tweet");
   var $fade = $(".cycle-visibility").hide();
   
+  function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+  var username = getParameterByName('username');
+  
   var tweetToHtml = function(tweet){
+    //return "To be <span class='hash'>#successful</span>, you have to stand behind and make big bets on people you believe in. <span class='hash'>#Leadership</span><span class='info'>Cale Kennedy | @CaleKennedy | Brought to you by Bolt Studios</span>";
     var screenname = tweet.user.screen_name;
     var name = tweet.user.name;
     var text = tweet.text;
@@ -43,5 +52,23 @@
 
   setInterval(showNext, 8000);
   showNext();
+
+
+
+  //check for new tweets
+  
+  var load = function(){
+    $.getJSON('/favorites/'+username, function(t){
+      var reload = window.tweets.length == 0;
+      window.tweets = t;
+      if(reload){
+        showNext();
+      }
+    });
+  };
+  setInterval(load, 5*60*1000);
+  load();
+
+
 
 })();
