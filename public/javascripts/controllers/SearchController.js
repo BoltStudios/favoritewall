@@ -1,9 +1,12 @@
 function SearchController($scope, $location, $http, $routeParams) {
 	$scope.title = "Search"
 	$scope.username;
-	$scope.twitterApiUrl = "https://api.twitter.com/1.1/favorites/list.json?count=20&screen_name=";
 
-	$scope.callUrl = function(){
-		return $scope.twitterApiUrl + $scope.username;
+	$scope.resultsUrl = function(){
+		return "/result/?username=" + $scope.username + "&count=" + 20
+	}
+
+	$scope.redirect = function(){
+		$location.url($scope.resultsUrl())
 	}
 }
