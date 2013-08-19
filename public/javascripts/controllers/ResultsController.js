@@ -1,4 +1,4 @@
-function ResultsController($scope, $location, $http, $routeParams) {
+var ResultsController = ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
 
 	$scope.username = (!$routeParams.username || $routeParams.username === "" ? "self" : $routeParams.username)
@@ -8,7 +8,6 @@ function ResultsController($scope, $location, $http, $routeParams) {
 	var favoritesUrl = "/favorites/" + 
 						($routeParams.username ? $routeParams.username + "/" : "") + 
 						"?count=" + $scope.count
-	console.log(favoritesUrl)
 
 
 	function getTweets(){
@@ -24,6 +23,6 @@ function ResultsController($scope, $location, $http, $routeParams) {
 			})
 	}
 
-}
+}]
 
 

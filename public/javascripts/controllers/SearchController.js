@@ -1,4 +1,4 @@
-function SearchController($scope, $location, $http, $routeParams) {
+var SearchController = ['$scope', '$location', function($scope, $location) {
 	$scope.title = "Search"
 	$scope.username;
 	$scope.layout = "fullscreen"; //overlay, fullscreen
@@ -12,4 +12,4 @@ function SearchController($scope, $location, $http, $routeParams) {
 	$scope.redirect = function(){
 		$location.url($scope.resultsUrl())
 	}
-}
+}]

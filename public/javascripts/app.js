@@ -11,12 +11,12 @@ var views = {
 }
 
 var app = angular.module('twitterspitter', [])
-	.config(function($routeProvider, $locationProvider) {
+	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', 		{ controller: controllers.home, 	templateUrl: views.home   })
 			.when('/search',{ controller: controllers.search, 	templateUrl: views.search })
 			.when('/result',{ controller: controllers.result, 	templateUrl: views.result })
 			.otherwise({ redirectTo: '/' })
-	})
+	}])
 
 

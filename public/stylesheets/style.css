@@ -2,7 +2,36 @@ html{
 	font-family: 'Open Sans', sans-serif;
 }
 
-body {  margin: 0;
+body {  
+	margin: 0;
+	font-size: 13pt;
+}
+
+@media screen and (min-width: 777px) {
+	#instructions {
+		background-image:url('/images/instructions.png');
+		height: 238px;
+	}
+}
+
+@media screen and (max-width: 776px) {
+  #nav-links { 
+  	text-align: center !important;
+  	margin-top: 0.8em;
+  }
+
+  #instructions {
+  	background-image:url('/images/instructions-767px.jpg');
+  	height: 238px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+	#nav-links a {
+		display: block !important;
+		margin: 1.0em 0 !important;
+	}
+
 }
 
 div.wrapper{
@@ -10,7 +39,102 @@ div.wrapper{
 	margin-right: auto;
 	margin-left: auto;
 	display: block;
+	padding: 1.5em 0;
 }
+
+div.wrapper.top {
+	background-color: #38c;
+	color: #fff;
+}
+
+div.wrapper.top h1, h2, h3, h4, h5, h6 {
+	font-weight: 300;
+}
+
+div.wrapper .centered {
+	text-align: center;
+}
+
+#instructions {
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 100%;
+}
+
+#nav-links {
+	text-align: right;
+}
+
+#nav-links a {
+	color: #fff;
+	text-decoration: none;
+	margin: 0 0.5em;
+	background-color: #3177ae;
+	padding: 0.5em 0.8em;
+	border-radius: 1.0em;
+}
+
+.centered img {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.button {
+	padding: 1.0em;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 0.75em;
+	position: relative;
+	display: inline-block;
+}
+.button.favwall {
+	color: #fff;
+	background-color: #f66b00;
+	text-transform: uppercase;
+	border: 1px outset #f77e20;
+}
+
+.button > .action-image {
+	font-size: 2.0em;
+	padding-right: 0.3em;
+	border-right: 1px solid #d25b00;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.button > .action-text {
+	padding-left: 0.3em;
+	vertical-align: middle;
+}
+
+div.wrapper.mid {
+	background-color: #38261C;
+	color: #fff;
+}
+
+div.wrapper.bottom {
+	background-color: #fff;
+	color: #000;
+}
+
+div.wrapper .footer {
+	border-top: 1px solid #eee;
+	color: #000;
+	text-align: left;
+	padding-top: 0.8em;
+	font-size: 0.8em;
+}
+
+
+
+
+
+
+
+
+
+
 
 div.topdiv {
 	 background-color: #3684c6; 

@@ -1,3 +1,3 @@
-function HomeController($scope, $location, $http, $routeParams) {
+var HomeController = ['$scope', function($scope) {
 	$scope.title = "Home/Index"
-}
+}]

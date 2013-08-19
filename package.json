@@ -12,6 +12,7 @@
     "passport": "*",
     "passport-twitter": "*",
     "mongoose": "*",
-    "oauth": "*"
+    "oauth": "*",
+    "bund-cake": "0.0.3"
   }
 }
