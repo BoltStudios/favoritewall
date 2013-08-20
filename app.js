@@ -13,43 +13,21 @@ var express = require('express')
   GLOBAL.consumerSecret = '4ZcSL65MtaUKrUu4H0bUKRaF6vADvpEDsykjM68Vs8A'
   GLOBAL.cake = require('bund-cake')(app)
 
-// all environments
-// app.configure(function () {    
-// 	app.set('port', process.env.PORT || 3000);
-// 	app.set('views', __dirname + '/views');
-// 	app.set('view engine', 'ejs');
-// 	app.use(express.favicon());
-// 	app.use(express.logger('dev'));
-// 	app.use(express.bodyParser());
-// 	app.use(express.methodOverride());
-// 	app.use(express.cookieParser('twitterspitter'));
-// 	//app.use(express.cookieSession({secret: 'yo momma so dumb she'}));
-  	
-//   	app.use(express.session({ secret: 'keyboard cat' }));
-//   	app.use(passport.initialize());
-//   	app.use(passport.session());
-
-// 	app.use(app.router);
-// 	app.use(require('less-middleware')({ src: __dirname + '/public' }));
-// 	app.use(express.static(path.join(__dirname, 'public')));
-// });
-
-// all environments
-//app.set('views', __dirname + '/views'); //taken care of in routes 
-app.use(express.favicon(__dirname + '/public/images/favicon.png')); 
-app.set('port', process.env.PORT || 3000);
-app.set('view engine', 'ejs');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.cookieParser())
-app.use(express.session({secret: 'snoop doggy dogg'}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(app.router);
-app.use(require('less-middleware')({ src: __dirname + '/public' }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.configure(function () {    
+	app.set('port', process.env.PORT || 3000);
+	app.set('views', __dirname + '/views');
+	app.set('view engine', 'ejs');
+	app.use(express.favicon());
+	app.use(express.logger('dev'));
+	app.use(express.bodyParser());
+	app.use(express.methodOverride());
+	app.use(express.cookieParser('twitterspitter'));
+	app.use(express.cookieSession({secret: 'yo momma so dumb she'}))
+	app.use(passport.initialize());
+	app.use(app.router);
+	app.use(require('less-middleware')({ src: __dirname + '/public' }));
+	app.use(express.static(path.join(__dirname, 'public')));
+});
 
 require('./routes')(app);
 
