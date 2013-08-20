@@ -1,10 +1,6 @@
-html{
-	font-family: 'Open Sans', sans-serif;
-}
-
 body {  
 	margin: 0;
-	font-size: 13pt;
+	font: 13pt 'Open Sans', 'Helvetica', 'Arial', sans-serif;
 }
 
 @media screen and (min-width: 777px) {
@@ -120,13 +116,19 @@ div.wrapper.bottom {
 
 div.wrapper .footer {
 	border-top: 1px solid #eee;
-	color: #000;
+	color: #ccc;
 	text-align: left;
 	padding-top: 0.8em;
-	font-size: 0.8em;
+	font-size: 0.7em;
 }
 
+.right-text {
+	text-align: right;
+}
 
+.right-text a {
+	padding: 0 0.6em;
+}
 
 
 
