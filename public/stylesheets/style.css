@@ -49,8 +49,10 @@ body {
 	}
 }
 
-span.large {
+.large {
 	font-size: 2.0em;
+	margin: 0;
+	padding: 0;
 }
 
 div.wrapper{
