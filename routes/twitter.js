@@ -61,5 +61,5 @@ module.exports = function(app) {
 
 
 	app.get('/auth/twitter/callback', passport.authenticate('twitter',
-		{successRedirect: '/#/search', failureRedirect: '/account'}))
+		{successRedirect: '/setup', failureRedirect: '/'}))
 }

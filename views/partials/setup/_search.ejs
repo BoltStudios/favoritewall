@@ -1,0 +1,88 @@
+<div class='grid-100 centered'>
+
+	<form id='search-form' action='/result'>
+
+		<div class='grid-100 grid-parent'>
+			<div class='step grid-30'>
+				<h2>1</h2>
+				<p>Enter a username</p>
+			</div>
+			<div class='form-element grid-70'>
+				<input type='text' autocorrect='off' name='username' placeholder='Username' />
+			</div>
+		</div>
+
+		<div class='grid-100 grid-parent'>
+			<div class='step grid-30'>
+				<h2>2</h2>
+				<p>Choose your layout</p>
+			</div>
+			<div class='form-element grid-70 grid-parent'>
+				<div class='grid-50 display-swapper'>
+					<a class='button favwall option' data-value='fullscreen'><i class='icon-check-empty'></i> Fullscreen</a>
+					<img data-value='fullscreen' src='/images/Fullscreen.jpg' class='display-image' />
+				</div>
+				<div class='grid-50 display-swapper'>
+					<a class='button favwall option' data-value='overlay'><i class='icon-check'></i> Overlay</a>
+					<img data-value='overlay' src='/images/Overlay.jpg' class='display-image' />
+				</div>
+
+				<div style='display:none;' id=''>
+					<input type='radio' name='layout' value='fullscreen' checked='false'>Full Screen</input>
+					<input type='radio' name='layout' value='overlay' checked='true'>Overlay</input><br/>
+				</div>
+			</div>
+		</div>
+
+		<div class='grid-100 grid-parent'>
+			<div class='step grid-30'>
+				<h2>3</h2>
+				<p>Check it out</p>
+			</div>
+			<div class='form-element grid-70'>
+				<button type='submit' class='button favwall'>Go to Wall</button>
+			</div>
+		</div>
+			
+		</div>
+	</form>
+</div>
+
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+
+<script>
+$(function() {
+
+	$('.display-swapper .option, .display-image').on('click', function(e) {
+		e.preventDefault()
+		var value = $(this).data('value')
+		toggleRadios(value)
+		toggleChecks(value)
+	})
+
+	var toggleRadios = function(value) {
+		var radio = $('input[value='+value+']')
+		
+		radio.prop('checked', true)
+		$.each(radio.siblings(), function() {
+			$(this).prop('checked', false)
+		})
+	}
+
+	var toggleChecks = function(value) {
+		var iconToggle = function(icon) {
+			if(icon.hasClass('icon-check')) {
+				icon.removeClass()
+				icon.addClass('icon-check-empty')
+			} else {
+				icon.removeClass()
+				icon.addClass('icon-check')
+			}
+
+		}
+		$.each($('a[data-value]'), function() {
+			iconToggle($(this).find('i'))
+		})
+	}
+})
+</script>
