@@ -6,6 +6,7 @@
 // exports.index = function(req, res){
 //   res.render('index', { title: 'Express' });
 // };
+var filters = require('./actionFilter')
 
 module.exports = function(app) {
 
@@ -16,8 +17,9 @@ module.exports = function(app) {
 		res.render('index', {page:'index'})
 	})
 
-	app.get('/setup', /*isLoggedIn,*/ function(req, res) {
-		res.render('index', {page:'setup'})
+	app.get('/setup', filters.isLoggedIn, function(req, res) {
+		var name = req.session.passport.user.name || null
+		res.render('index', {page:'setup', username: name})
 	})
 	
 	app.get('/result', function(req, res){
