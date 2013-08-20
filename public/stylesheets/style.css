@@ -8,6 +8,8 @@ body {
 		background-image:url('/images/instructions.png');
 		height: 238px;
 	}
+
+	#nav-links-mid { display: none !important; }
 }
 
 @media screen and (max-width: 776px) {
@@ -20,6 +22,10 @@ body {
   	background-image:url('/images/instructions-medium.png');
   	height: 245px;
   }
+
+  #nav-links-mid { display: none !important; }
+
+  #nav-logo { text-align: center !important; }
 }
 
 @media screen and (max-width: 600px) {
@@ -46,6 +52,12 @@ body {
 @media screen and (max-width: 400px) {
 	#nav-links {
 		display: none !important;
+	}
+
+	#nav-links-mid { display: block !important; }
+	#nav-links-mid a {
+		display: block !important;
+		margin: 1.0em 0 !important;
 	}
 }
 
@@ -90,6 +102,19 @@ div.wrapper .centered {
 	color: #fff;
 	text-decoration: none;
 	margin: 0 0.5em;
+	background-color: #3177ae;
+	padding: 0.5em 0.8em;
+	border-radius: 1.0em;
+}
+
+#nav-links-mid {
+	text-align: center;
+}
+
+#nav-links-mid a {
+	color: #fff;
+	text-decoration: none;
+	margin: 0.8em 0.5em;
 	background-color: #3177ae;
 	padding: 0.5em 0.8em;
 	border-radius: 1.0em;
