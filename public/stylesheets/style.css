@@ -33,6 +33,14 @@ body {
 		height: 547px;
 	}
 
+	div.wrapper .footer {
+		text-align: center !important;
+	}
+
+	.right-text {
+		text-align: center !important;
+	}
+
 }
 
 @media screen and (max-width: 400px) {
