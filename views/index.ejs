@@ -7,7 +7,6 @@
 
     <% if(page == 'index') { %> <% include partials/index/_mid %> <% } %>
 
-
   </div>
 </div>
 
@@ -15,14 +14,11 @@
   <div class='grid-container'>
     <div class='centered'>
       
-      <% if(page == 'index') { %>
-        <div id='instructions'></div>
-      <% } %>
+      <% if(page == 'index') { %><div id='instructions'></div><% } %>
 
-      <%if(page == 'setup') { %>
-        <span class='large'>Get started in 3 easy steps</span>
+      <% if(page == 'setup') { %><span class='large'>Get started in 3 easy steps</span><% } %>
 
-      <% } %>
+      <% if(page == 'why-free') { %><span class='large'>Why is this free?</span><% } %>
     </div>
   </div>
 </div>
@@ -32,6 +28,7 @@
     
     <% if(page == 'index') { %> <% include partials/index/_bottom %> <% } %>
     <% if(page == 'setup') { %> <% include partials/setup/_search %> <% } %>
+    <% if(page == 'why-free') {%> <% include partials/why-free/_free %> <% } %>
 
     <div class='grid-100'>
       <div class='footer'>

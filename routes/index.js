@@ -21,6 +21,10 @@ module.exports = function(app) {
 		var name = req.session.passport.user.name || null
 		res.render('index', {page:'setup', username: name})
 	})
+
+	app.get('/why-is-this-free', function(req, res) {
+		res.render('index', {page:'why-free'})
+	})
 	
 	app.get('/result', function(req, res){
 	  var username = req.query.username;
