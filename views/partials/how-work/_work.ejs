@@ -1,0 +1,93 @@
+<div class='grid-100 centered'>
+	<div id='step-sequence'>
+		<div class='grid-100 grid-parent'>
+			<div class='step grid-30'>
+				<h2>1</h2>
+				<p>Connect your Twitter account</p>
+			</div>
+			<div class='form-element grid-70'>
+				<p>
+				Connecting your Twitter account allows us to make the connection needed to integrate your Twitter feed with your displays. Don’t worry, we can’t see your password, post on your wall, or generally do anything not cool. That being said, if you like the software, we’re always appreciative of a social media shout out <a href='http://twitter.com/boltstudiosokc'>@boltstudiosokc</a>.
+				</p>
+
+				<img src='/images/how-does-this-work/1.jpg' />
+			</div>
+		</div>
+
+		<div class='grid-100 grid-parent'>
+			<div class='step grid-30'>
+				<h2>2</h2>
+				<p>Choose your display</p>
+			</div>
+			<div class='form-element grid-70 grid-parent'>
+				<p>
+				If you have a video mixer, Favorite Wall allows you to overlay your feed on top of video. If that sounds cool, but you have no idea what that means, <a href='#' data-target='what-the-heck'>click here</a>.
+
+				<div name='what-the-heck' class='tell-me-more' role='hidden'>
+					<i class='icon-remove'></i>
+					Mixing two streams of information together is called chroma keying. Using chroma key compositing, your video mixer <a href='http://www.amazon.com/Roland-V-4-4-Channel-Video-Mixer/dp/B0002I6M02/' target='_blank'>(one like this)</a> can remove the green background from your Twitter feed being displayed. Simply show your browser full screen, feed it into your video mixer, and layer it on top of your live video stream.
+				</div>
+
+				If you don’t have a video mixer, choose full screen. Favorite Wall will take up the entire width of the monitor no matter the size. That’s some skillz with a z type stuff there.
+				</p>
+
+				<div class='grid-50 display-swapper'>
+					<img data-value='fullscreen' src='/images/how-does-this-work/2a.jpg' class='display-image' />
+				</div>
+				<div class='grid-50 display-swapper'>
+					<img data-value='overlay' src='/images/how-does-this-work/2b.jpg' class='display-image' />
+				</div>
+			</div>
+		</div>
+
+		<div class='grid-100 grid-parent'>
+			<div class='step grid-30'>
+				<h2>3</h2>
+				<p>Show your favorites</p>
+			</div>
+			<div class='form-element grid-70'>
+				<p>As far as Favorite Wall goes, you’re done.</p>
+
+				<img src='/images/how-does-this-work/3.jpg' />
+			</div>
+		</div>
+
+		<div class='grid-100 grid-parent'>
+			<div class='step grid-30'>
+				<h2>4</h2>
+				<p>Start favoriting from any device</p>
+			</div>
+			<div class='form-element grid-70'>
+				<p>
+				This is the fun part. You can now start favoriting  tweets from any device. Most all Twitter clients will let you follow a search term or a hashtag, and there are several software clients like HootSuite that will let you monitor multiple search terms at once. Maybe you want to see:</p>
+				
+				<p class='emph'>Who’s talking about your event?<br/>
+					What they’re saying about your speaker?<br/>
+					Who’s tweeting your hashtag?
+				</p>
+				<p>
+				Plug those search terms in, and anytime you see something you want everyone to see, simply favorite it. Favorite Wall will display up to 8 new tweets every minute.
+				</p>
+
+				<img src='/images/how-does-this-work/4.jpg' />
+			</div>
+		</div>
+			
+		<p>We hope you get a ton of use out of this software. All we ask in return is if you’re ever in a spot where you need something technically challenging knocked out, give us a shot to talk to you about it. You can check out our work and contact us over at <a href='http://boltstudios.com'>www.boltstudios.com</a>.</p>
+		</div>
+	</div>
+</div>
+
+<script>
+$(function() {
+	$('[role=hidden]').hide()
+	$('[data-target]').click(function(e) {
+		e.preventDefault();
+		$('[name=' + $(this).data('target') + ']').slideToggle()
+	})
+
+	$('.tell-me-more i').click(function(e) {
+		$(this).parent().slideToggle()
+	})
+})
+</script>

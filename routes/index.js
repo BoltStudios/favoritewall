@@ -25,6 +25,10 @@ module.exports = function(app) {
 	app.get('/why-is-this-free', function(req, res) {
 		res.render('index', {page:'why-free'})
 	})
+
+	app.get('/how-does-this-work', function(req, res) {
+		res.render('index', {page: 'how-work'})
+	})
 	
 	app.get('/result', function(req, res){
 	  var username = req.query.username;

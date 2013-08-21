@@ -19,6 +19,8 @@
       <% if(page == 'setup') { %><h2 class='large'>Get started in 3 easy steps</h2><% } %>
 
       <% if(page == 'why-free') { %><h2 class='large'>Why is this free?</h2><% } %>
+
+      <% if(page == 'how-work') { %><h2 class='large'>How does this work?</h2><% } %>
     </div>
   </div>
 </div>
@@ -29,6 +31,7 @@
     <% if(page == 'index') { %> <% include partials/index/_bottom %> <% } %>
     <% if(page == 'setup') { %> <% include partials/setup/_search %> <% } %>
     <% if(page == 'why-free') {%> <% include partials/why-free/_free %> <% } %>
+    <% if(page == 'how-work') {%> <% include partials/how-work/_work %> <% } %>
 
     <div class='grid-100'>
       <div class='footer'>
@@ -38,8 +41,8 @@
 
         <div class='grid-50'>
           <div class='right-text'>
-            <a href='#'>Why Free?</a>
-            <a href='#'>Demo</a>
+            <a href='/why-is-this-free'>Why Free?</a>
+            <a href='#'>How To</a>
           </div>
         </div>
       </div>
