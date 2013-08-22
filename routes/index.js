@@ -2,7 +2,7 @@
 
 
 var filters = require('./actionFilter');
-var tweetService = require('../services/tweetService');
+var favoritesService = require('../services/favoritesService');
 
 
 module.exports = function(app) {
@@ -20,12 +20,19 @@ module.exports = function(app) {
 	})
 	
 	app.get('/result', function(req, res){
-	  tweetService.getTweets(
+	  favoritesService.getTweets(
 	    req.query.username,
 	    req.session.passport.user.token,
 	    req.session.passport.user.tokenSecret,
 	    function(tweets){
-  	    res.render('result/index', { tweets: tweets });
+  	    res.render('result/index', { 
+  	      tweets: tweets,
+  	      credentials: {
+      	    token: req.session.passport.user.token,
+      	    tokenSecret: req.session.passport.user.tokenSecret,
+      	    username: req.query.username
+    	    }
+	      });
       }
     );
 	});

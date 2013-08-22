@@ -18,14 +18,17 @@
 
     <script>
         window.tweets = <%- JSON.stringify(tweets) %>;
+				window.credentials = <%- JSON.stringify(credentials) %>;
     </script>
 
 		<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+		<script src="//cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
+		<script src="/primus/primus.js"></script>
 		<script src='/javascripts/dashboard-redraw.js'></script>
 		<script src='/javascripts/dashboard-cycle.js'></script>
 		<script src='/javascripts/dashboard-font.js'></script>
 		<script src='/javascripts/dashboard-resize.js'></script>
-		<script src='/javascripts/dashboard-loadTweets.js'></script>
+		<script src='/javascripts/dashboard-socket.js'></script>
 	
 	</body>
 </html>

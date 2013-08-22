@@ -9,8 +9,9 @@ var express = require('express')
   , passport = require('passport')
   , app = express();
 
-  GLOBAL.consumerKey = 'lus2i66cmnPgla8zF2q5Q'
-  GLOBAL.consumerSecret = '4ZcSL65MtaUKrUu4H0bUKRaF6vADvpEDsykjM68Vs8A'
+GLOBAL.consumerKey = 'lus2i66cmnPgla8zF2q5Q'
+GLOBAL.consumerSecret = '4ZcSL65MtaUKrUu4H0bUKRaF6vADvpEDsykjM68Vs8A'
+GLOBAL.PubSub = require('pubsub-js');
 
 app.configure(function () {    
 	app.set('port', process.env.PORT || 3000);
@@ -37,6 +38,10 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app);
+server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+require('./services/socketService').load(server);

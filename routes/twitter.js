@@ -6,7 +6,7 @@ var passport = require('passport')
 
 module.exports = function(app) {
 	
-	// access user through req.session.passposrt.user (sorry) ¯\_(⊙ ︿ ⊙)_/¯
+	// access user through req.session.passposrt.user (sorry) ¯\_(⊙ ︿ ⊙)_/¯ 
 	passport.serializeUser(function(user, done) {		
 		done(null, {
 			name: user['name'],
