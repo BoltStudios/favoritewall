@@ -1,12 +1,9 @@
 
-/*
- * GET home page.
- */
 
-// exports.index = function(req, res){
-//   res.render('index', { title: 'Express' });
-// };
-var filters = require('./actionFilter')
+
+var filters = require('./actionFilter');
+var tweetService = require('../services/tweetService');
+
 
 module.exports = function(app) {
 
@@ -23,9 +20,14 @@ module.exports = function(app) {
 	})
 	
 	app.get('/result', function(req, res){
-	  var username = req.query.username;
-	  var layout = req.query.layout;
-	  res.render('result/index');
+	  tweetService.getTweets(
+	    req.query.username,
+	    req.session.passport.user.token,
+	    req.session.passport.user.tokenSecret,
+	    function(tweets){
+  	    res.render('result/index', { tweets: tweets });
+      }
+    );
 	});
 
 }

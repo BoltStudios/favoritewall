@@ -56,19 +56,4 @@
   showNext();
 
 
-
-  //check for new tweets
-  
-  var load = function(){
-    $.getJSON('/favorites/'+username, function(t){
-      var reload = window.tweets.length == 0;
-      window.tweets = t;
-      showNext();
-    });
-  };
-  setInterval(load, 5*60*1000);
-  load();
-
-
-
 })();

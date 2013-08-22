@@ -6,30 +6,7 @@ var passport = require('passport')
 
 module.exports = function(app) {
 	
-	app.get('/favorites/:username', function(req, res) {
-		var username = req.params.username || ''
-		  , count = 10
-		  , path = 'https://api.twitter.com/1.1/favorites/list.json?count='+count
-		
-		path = !username ? path + '&user_id' + req.session.passport.user.providerId : path + '&screen_name='+username
-
-		var o = new oauth(
-		  		'https://api.twitter.com/oauth/request_token',
-		  		'https://api.twitter.com/oauth/access_token',
-		  		GLOBAL.consumerKey,
-		  		GLOBAL.consumerSecret,
-		  		'1.0A', '/auth/twitter/callback', 'HMAC-SHA1'
-		  	)
-
-		o.get(path, req.session.passport.user.token, req.session.passport.user.tokenSecret, function(error, data) {
-			if(error) {
-				res.send(error)
-			}
-			res.send(data)
-		})
-	})
-
-	// access user through req.session.passposrt.user (sorry)
+	// access user through req.session.passposrt.user (sorry) ¯\_(⊙ ︿ ⊙)_/¯
 	passport.serializeUser(function(user, done) {		
 		done(null, {
 			name: user['name'],
