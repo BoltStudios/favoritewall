@@ -30,8 +30,7 @@ app.configure(function () {
 });
 
 require('./routes')(app);
-GLOBAL.cake = require('bund-cake')(app)
-
+GLOBAL.cake = require('bund-cake')(app);
 
 // development only
 if ('development' == app.get('env')) {
