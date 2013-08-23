@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+	
+	  <link rel='stylesheet' type='text/css' href='/stylesheets/dashboard.css' />
+	
+	</head>
+	<body>
+
+    <div class='tweet-panel'>
+	    <div class='cycle-visibility'><div class='font-loaded-visibility'><div class='resize-visibility'>
+			  <div class='icon'>
+			    <img src='/images/tweet-icon.png' />
+			  </div>
+	      <div class='tweet'></div>
+      </div></div></div>
+    </div>
+
+    <script>
+<<<<<<< HEAD
+        window.tweets = [];
+=======
+        window.tweets = <%- JSON.stringify(tweets) %>;
+				window.credentials = <%- JSON.stringify(credentials) %>;
+>>>>>>> ede1830eaa3aa2aaf1c07abdc26a793103c6ffdf
+    </script>
+
+		<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+		<script src="//cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
+		<script src="/primus/primus.js"></script>
+		<script src='/javascripts/dashboard-redraw.js'></script>
+		<script src='/javascripts/dashboard-cycle.js'></script>
+		<script src='/javascripts/dashboard-font.js'></script>
+		<script src='/javascripts/dashboard-resize.js'></script>
+		<script src='/javascripts/dashboard-socket.js'></script>
+	
+	</body>
+</html>
