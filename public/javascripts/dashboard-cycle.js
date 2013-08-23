@@ -3,6 +3,7 @@
 
   //Get a handle to elements
   var $tweet = $(".tweet");
+  var $tweetPanel = $(".tweet-panel");
   var $fade = $(".cycle-visibility").hide();
   
   function getParameterByName(name) {
@@ -33,8 +34,48 @@
     return html;
   };
   
-  var showNext = function(){
-    if(window.tweets.length == 0) return;
+  var showNextTimeout = null;
+  var clearShowNextTimeout = function(){
+    //clear the timeout
+    if(showNextTimeout){
+      clearTimeout(showNextTimeout);
+      showNextTimeout = null;
+    }
+  };
+  var showNextInEightSeconds = function(){
+    clearShowNextTimeout();
+    showNextTimeout = setTimeout(window.showNextTweet, 8000);
+  };
+  window.newTweetIsAvailable = function(){
+    //already waiting to run?
+    if(showNextTimeout) return;
+    
+    //no pending timeout, so show it now
+    window.showNextTweet();
+  };
+  window.showNextTweet = function(){
+    clearShowNextTimeout();
+    
+    if(window.tweets.length == 0){
+      if(window.isContinuous){
+        //check again in 8 seconds
+        showNextInEightSeconds();
+        return;
+      }else{
+        //animate the panel out
+        $tweetPanel.hide();
+        return;
+      }
+    }
+    
+    //we're about to show a tweet
+    if($tweetPanel.is(':hidden')){
+      //hide whatever tweet was showing
+      $fade.hide();
+      
+      //animate the panel in
+      $tweetPanel.show(); 
+    }
     
     window.tweets.sort(function(a,b){
       a.shown = a.shown || 0;
@@ -45,7 +86,14 @@
     });
     
     var tweet = window.tweets[0];
+    
+    //mark it as shown now
     tweet.shown = new Date().getTime();
+    
+    if(!window.isContinuous){
+      //remove the tweet
+      window.tweets.splice(0, 1);
+    }
       
     $fade.fadeOut(400, function(){
       var html = tweetToHtml(tweet);
@@ -57,10 +105,11 @@
       
       $fade.fadeIn(400);
     });
+    
+    showNextInEightSeconds();
   };
 
-  setInterval(showNext, 8000);
-  showNext();
+  window.showNextTweet();
 
 
 })();

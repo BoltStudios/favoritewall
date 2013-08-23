@@ -5,6 +5,13 @@
 
   primus.on('data', function message(data) {
     if(data.action == 'new-favorite-tweet'){
+      if(!window.isContinuous){
+        window.tweets.push(data.tweet);
+        
+        window.newTweetIsAvailable();
+        return;
+      }
+      
       //ignore the tweet if it's already known
       for(var i=0; i<window.tweets.length; i++){
         var t = window.tweets[i];
