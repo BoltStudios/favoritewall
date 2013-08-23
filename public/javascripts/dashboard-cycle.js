@@ -4,6 +4,7 @@
   //Get a handle to elements
   var $tweet = $(".tweet");
   var $tweetPanel = $(".tweet-panel");
+  var $tweetPanelWrapper = $(".tweet-panel-wrapper");
   var $fade = $(".cycle-visibility").hide();
   
   function getParameterByName(name) {
@@ -63,18 +64,18 @@
         return;
       }else{
         //animate the panel out
-        $tweetPanel.hide();
+        $tweetPanelWrapper.animate({'top':'40%'}, 200);
         return;
       }
     }
     
     //we're about to show a tweet
-    if($tweetPanel.is(':hidden')){
+    if($tweetPanelWrapper.css('top') != '0%'){
       //hide whatever tweet was showing
       $fade.hide();
       
       //animate the panel in
-      $tweetPanel.show(); 
+      $tweetPanelWrapper.animate({'top':'0%'}, 200);
     }
     
     window.tweets.sort(function(a,b){
