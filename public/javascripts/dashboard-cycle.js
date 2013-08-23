@@ -33,14 +33,21 @@
     return html;
   };
   
-  var tweetIndex = -1;
   var showNext = function(){
     if(window.tweets.length == 0) return;
     
-    $fade.fadeOut(400, function(){
-      tweetIndex += 1;
+    window.tweets.sort(function(a,b){
+      a.shown = a.shown || 0;
+      b.shown = b.shown || 0;
+      if (a.shown < b.shown) return -1;
+      if (a.shown > b.shown) return 1;
+      return 0;
+    });
+    
+    var tweet = window.tweets[0];
+    tweet.shown = new Date().getTime();
       
-      var tweet = window.tweets[tweetIndex%window.tweets.length];
+    $fade.fadeOut(400, function(){
       var html = tweetToHtml(tweet);
       $tweet.html(html);
     
@@ -54,21 +61,6 @@
 
   setInterval(showNext, 8000);
   showNext();
-
-
-
-  //check for new tweets
-  
-  var load = function(){
-    $.getJSON('/favorites/'+username, function(t){
-      var reload = window.tweets.length == 0;
-      window.tweets = t;
-      showNext();
-    });
-  };
-  setInterval(load, 5*60*1000);
-  load();
-
 
 
 })();

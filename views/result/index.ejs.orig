@@ -17,8 +17,12 @@
     </div>
 
     <script>
+<<<<<<< HEAD
+        window.tweets = [];
+=======
         window.tweets = <%- JSON.stringify(tweets) %>;
 				window.credentials = <%- JSON.stringify(credentials) %>;
+>>>>>>> ede1830eaa3aa2aaf1c07abdc26a793103c6ffdf
     </script>
 
 		<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
