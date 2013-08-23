@@ -1,5 +1,4 @@
 var ntwitter = require('ntwitter');
-var cache = require('./cachingService');
 
 var monitors = {};
 
@@ -13,41 +12,40 @@ var favoritesMonitor = module.exports = {
     };
     monitors[username] = monitor;
     
-    twitter.stream('user', function(stream){
+    
+    monitor.twitter.stream('user', function(stream){
       monitor.stream = stream;
       
       stream.on('data', function (data) {
-        //only pay attention to favorites
-        if(data.event != 'favorite')
-          return;
         
         //only care about things WE favorited (not my tweet that someone else favorited)
-        if(data.source.screen_name != username)
+        if(!data || !data.source || data.source.screen_name != username)
           return;
+          
+        //favorite?
+        if(data.event == 'favorite'){
+          //publish favorite event 
+          var tweet = data.target_object;
+          PubSub.publish('new-favorite-'+username, tweet);
+        }
         
-        var tweet = data.target_object;
+        //unfavorite?
+        if(data.event == 'unfavorite'){
+          //publish favorite event 
+          var tweet = data.target_object;
+          PubSub.publish('new-unfavorite-'+username, tweet);
+        }
         
-        //get current favorites
-        var favorites = cache.get(username) || [];
-        
-        //make the new tweet first (newest)
-        favorites.splice(0, 0, tweet);
-        
-        //limit length to 10
-        if(favorites.length > 10)
-            favorites.splice(10, favorites.length-10);
-        
-        cache.set(username, favorites);
       });
-      stream.on('end', function (response) {
-        console.log('end', response);
-      });
-      stream.on('destroy', function (response) {
-        console.log('destroy', response);
-      });
-      stream.on('error', function (error, code) {
-        console.log('error', arguments);
-      });
+      // stream.on('end', function (response) {
+      //   console.log('end', response);
+      // });
+      // stream.on('destroy', function (response) {
+      //   console.log('destroy', response);
+      // });
+      // stream.on('error', function (error, code) {
+      //   console.log('error', arguments);
+      // });
     });
   },
   

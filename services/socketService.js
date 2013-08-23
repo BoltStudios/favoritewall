@@ -1,7 +1,7 @@
 
 
 var Primus = require('primus');
-var favoritesService = require('./favoritesService');
+var favoritesMonitor = require('./favoritesMonitor');
 
 exports.load = function(server){
   var primus = new Primus(server, { transformer: 'sockjs' });
@@ -15,32 +15,38 @@ exports.load = function(server){
         
       //only begin once
       hasBegun = true;
-      console.log('spark began');
       
       //gather data from socket
       var credentials = message.data.credentials;
       
-      //subscribe to any changes in favorited tweets
-      var subscription = PubSub.subscribe(credentials.username+'-favorites-changed', function(msg, data){
-        console.log('spark received favorites, writing them... ', data.length);
-        spark.write({
-          action: 'favorites',
-          tweets: data
-        });
-      });
+      //subscribe to any changes in favorited/unfavorited tweets
+      var subscriptions = [
+        PubSub.subscribe('new-favorite-'+credentials.username, function(msg, tweet){
+          spark.write({
+            action: 'new-favorite-tweet',
+            tweet: tweet
+          });
+        }),
+        PubSub.subscribe('new-unfavorite-'+credentials.username, function(msg, tweet){
+          spark.write({
+            action: 'new-unfavorite-tweet',
+            tweet: tweet
+          });
+        })
+      ];
     
       //start monitoring twitter
-      favoritesService.startMonitoring(credentials.username, credentials.token, credentials.tokenSecret);
+      favoritesMonitor.start(credentials.username, credentials.token, credentials.tokenSecret);
     
       //cleanup when client disconnects
       spark.on('end', function(){
-        console.log('spark end');
-      
+        
         //stop listening for changes
-        PubSub.unsubscribe(subscription);
+        for(var i=0; i<subscriptions.length; i++)
+          PubSub.unsubscribe(subscriptions[i]);
     
         //stop monitoring twitter
-        favoritesService.stopMonitoring(credentials.username);
+        favoritesMonitor.stop(credentials.username);
       });
     });
     
