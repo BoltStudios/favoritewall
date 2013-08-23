@@ -12,6 +12,7 @@ var express = require('express')
 GLOBAL.consumerKey = 'lus2i66cmnPgla8zF2q5Q'
 GLOBAL.consumerSecret = '4ZcSL65MtaUKrUu4H0bUKRaF6vADvpEDsykjM68Vs8A'
 GLOBAL.PubSub = require('pubsub-js');
+GLOBAL.bund = require('bund-cake')(app);
 
 app.configure(function () {    
 	app.set('port', process.env.PORT || 3000);
