@@ -33,8 +33,8 @@
 
 				<div style='display:none;' id=''>
 					<div>
-						<input type='radio' name='layout' value='fullscreen'>Full Screen</input>
-						<input type='radio' name='layout' value='overlay' checked>Overlay</input>
+						<input class="selection" type='radio' name='layout' value='fullscreen'>Full Screen</input>
+						<input class="selection" type='radio' name='layout' value='overlay' checked>Overlay</input>
 					</div>
 					<div>
 						<input type='checkbox' name='continuous' value='true' checked>Overlay Continuous</input>
@@ -98,6 +98,18 @@ $(function() {
 		var icon = selected.children("i");
 		icon.addClass("icon-check").removeClass("icon-check-empty");
 	}
+
+	function setOverlay(){
+		var newOnly = $("input[name=continuous]").is(":not(:checked)");
+		if(newOnly){
+			selectChecks("continuous");
+		}
+		else {
+			var layout = $("input[name=layout]:checked").val();
+			selectChecks(layout);
+		}
+	}
+	setOverlay();
 
 	$(".continuous").click(function(){
 		selectNewOnly();
