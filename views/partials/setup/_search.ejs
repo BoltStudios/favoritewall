@@ -18,18 +18,28 @@
 				<p>Choose your layout</p>
 			</div>
 			<div class='form-element grid-70 grid-parent'>
-				<div class='grid-50 display-swapper'>
+				<div class='grid-33 display-swapper fullscreen'>
 					<a class='button favwall option' data-value='fullscreen'><i class='icon-check-empty'></i> Fullscreen</a>
 					<img data-value='fullscreen' src='/images/FullScreen.jpg' class='display-image' />
 				</div>
-				<div class='grid-50 display-swapper'>
-					<a class='button favwall option' data-value='overlay'><i class='icon-check'></i> Overlay</a>
+				<div class='grid-33 display-swapper overlay'>
+					<a class='button favwall option' data-value='overlay'><i class='icon-check'></i> Overlay Continuous</a>
 					<img data-value='overlay' src='/images/Overlay.jpg' class='display-image' />
+				</div>
+				<div class='grid-33 display-swapper continuous'>
+					<a class='button favwall option' data-value='continuous'><i class='icon-check-empty'></i> Overlay New Only</a>
+					<img data-value='continuous' src='/images/Overlay.jpg' class='display-image' />
 				</div>
 
 				<div style='display:none;' id=''>
-					<input type='radio' name='layout' value='fullscreen' checked='false'>Full Screen</input>
-					<input type='radio' name='layout' value='overlay' checked='true'>Overlay</input><br/>
+					<div>
+						<input type='radio' name='layout' value='fullscreen' checked='false'>Full Screen</input>
+						<input type='radio' name='layout' value='overlay' checked='true'>Overlay</input>
+					</div>
+					<div>
+						<input type='checkbox' name='continuous' value='true' checked='true'>Overlay Continuous</input>
+					</div>
+					<br/>
 				</div>
 			</div>
 		</div>
@@ -52,37 +62,58 @@
 
 <script>
 $(function() {
+	function selectNewOnly(){
+		var continuousElement = $("input[name=continuous]")
+		var overlayRadio = $("input[name=layout][value=overlay]")
+		overlayRadio.prop('checked', true);
+		continuousElement.prop('checked', false);
+	}
 
-	$('.display-swapper .option, .display-image').on('click', function(e) {
-		e.preventDefault()
-		var value = $(this).data('value')
-		toggleRadios(value)
-		toggleChecks(value)
-	})
+	function deselectNewOnly(){
+		var continuousElement = $("input[name=continuous]")
+		continuousElement.prop('checked', true);
+	}
 
-	var toggleRadios = function(value) {
-		var radio = $('input[value='+value+']')
-		
-		radio.prop('checked', true)
-		$.each(radio.siblings(), function() {
+	function selectFullscreen(){
+		var fullscreen = $('input[value=fullscreen]')
+		fullscreen.prop('checked', true)
+		$.each(fullscreen.siblings(), function(){
+			$(this).prop('checked', false)
+		})
+
+	}
+
+	function selectOverlay(){
+		var overlay = $('input[value=overlay]')
+		overlay.prop('checked', true)
+		$.each(overlay.siblings(), function(){
 			$(this).prop('checked', false)
 		})
 	}
 
-	var toggleChecks = function(value) {
-		var iconToggle = function(icon) {
-			if(icon.hasClass('icon-check')) {
-				icon.removeClass()
-				icon.addClass('icon-check-empty')
-			} else {
-				icon.removeClass()
-				icon.addClass('icon-check')
-			}
+	var selectChecks = function(value) {
+		$(".icon-check").removeClass(".icon-check").addClass("icon-check-empty");
 
-		}
-		$.each($('a[data-value]'), function() {
-			iconToggle($(this).find('i'))
-		})
+		var selected = $("a[data-value="+value+"]");
+		var icon = selected.children("i");
+		icon.addClass("icon-check").removeClass("icon-check-empty");
 	}
+
+	$(".continuous").click(function(){
+		selectNewOnly();
+		selectChecks("continuous");
+	});
+
+	$(".fullscreen").click(function(){
+		deselectNewOnly();
+		selectFullscreen();
+		selectChecks("fullscreen");
+	});
+
+	$(".overlay").click(function(){
+		deselectNewOnly();
+		selectOverlay();
+		selectChecks("overlay");
+	});
 })
 </script>
